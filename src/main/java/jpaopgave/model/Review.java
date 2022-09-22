@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Review {
     @Id
@@ -23,10 +26,10 @@ public class Review {
     @ManyToOne
     //@JsonBackReference
     @EqualsAndHashCode.Exclude
-    private Event event;
+    private Event event;//bliver mapped i Event klassen
 
     @ManyToOne
     //@JsonBackReference
     @EqualsAndHashCode.Exclude
-    private User user;
+    private User user;//bliver mapped i User klassen
 }

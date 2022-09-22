@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -43,4 +44,10 @@ public class BandController {
         bandService.deleteById(along);
         return new ResponseEntity("band slettet", HttpStatus.OK);
     }
+
+    @GetMapping("getBandByName")
+    public ResponseEntity<List<Band>> getBandByName(String name){
+        return new ResponseEntity<>(bandService.findBandByNameOrderById(name), HttpStatus.OK);
+    }
+
 }

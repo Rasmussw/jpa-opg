@@ -5,6 +5,7 @@ import jpaopgave.repository.BandRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -43,5 +44,11 @@ public class BandService implements IBandService{
     @Override
     public Optional<Band> findById(Long aLong) {
         return bandRepository.findById(aLong);
+    }
+
+    @Override
+    public List<Band> findBandByNameOrderById(String name) {
+
+        return bandRepository.findBandByNameOrderById(name);
     }
 }
