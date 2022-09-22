@@ -44,11 +44,7 @@ public class User {
     @JsonBackReference
     private Set<Band> bandsLiked = new HashSet<>();
 
-
-
     @OneToMany(mappedBy = "user") //mapped til user objectet inden i Review Klassen
     @JsonIgnore
     private Set<Review> reviews = new HashSet<>();
-
-
 }
