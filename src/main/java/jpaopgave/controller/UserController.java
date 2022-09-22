@@ -38,7 +38,7 @@ public class UserController {
         if (user_.isPresent() && band_.isPresent()){
             user_.get().getBandsLiked().add(band_.get());
             iUserService.save(user_.get());
-            return new ResponseEntity<>("ok at gemme user: " + userID + "venue: " + bandID, HttpStatus.OK);
+            return new ResponseEntity<>("ok at gemme user: " + userID + " band: " + bandID, HttpStatus.OK);
         }
         return new ResponseEntity<>("fejl", HttpStatus.BAD_REQUEST);
     }
@@ -51,7 +51,7 @@ public class UserController {
         if (user_.isPresent() && venue_.isPresent()){
             user_.get().getVenuesLiked().add(venue_.get());
             iUserService.save(user_.get());
-            return new ResponseEntity<>("ok at gemme user: " + userID + "venue: " + venueID, HttpStatus.OK);
+            return new ResponseEntity<>("ok at gemme user: " + userID + " venue: " + venueID, HttpStatus.OK);
         }
         return new ResponseEntity<>("fejl", HttpStatus.BAD_REQUEST);
     }
