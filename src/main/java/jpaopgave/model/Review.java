@@ -2,15 +2,13 @@ package jpaopgave.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 public class Review {
     @Id
@@ -20,8 +18,6 @@ public class Review {
     private String text;
     private int rate;
 
-    public Review() {
-    }
 
     @ManyToOne
     //@JsonBackReference

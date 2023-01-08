@@ -5,12 +5,14 @@ import jpaopgave.model.Event;
 import jpaopgave.service.IBandService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -35,6 +37,8 @@ public class BandController {
     }
 
     @GetMapping("/getAllBands")
+    @PreAuthorize("hasAnyAuthority('ADMIN' , 'USER')")
+    //@RolesAllowed({"ROLE_ADMIN" , "ROLE_USER"})
     public ResponseEntity<HashSet> getAllBands(){
         return new ResponseEntity(bandService.findAll(), HttpStatus.OK);
     }

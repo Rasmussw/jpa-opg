@@ -36,6 +36,7 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      retention-days: 1
     
     steps:
       - name: Download artifact from build job

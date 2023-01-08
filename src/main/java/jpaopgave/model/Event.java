@@ -2,10 +2,7 @@ package jpaopgave.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -14,16 +11,17 @@ import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 public class Event {
 
-    public Event(){}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String venue;
     @ManyToOne //flere events kan have et band
     @JsonBackReference // pga. cirkulær reference i rescontroller
+
     @EqualsAndHashCode.Exclude //pga. hashcode() i @Data
     private Band band; //bliver mapped i Band
 

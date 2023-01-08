@@ -2,30 +2,22 @@ package jpaopgave.controller;
 
 import jpaopgave.model.Band;
 import jpaopgave.model.Event;
-import jpaopgave.service.EventService;
 import jpaopgave.service.IBandService;
 import jpaopgave.service.IEventService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.Optional;
 
-@Controller
+@RestController
+@AllArgsConstructor
 public class EventController {
 
     private IEventService ieventService;
     private IBandService bandService;
-
-    public EventController(IEventService ieventService, IBandService bandService) {
-        this.ieventService = ieventService;
-        this.bandService = bandService;
-    }
 
     @PostMapping("/createEvent")
     public ResponseEntity<String> createEvent(@RequestBody Event event, @RequestParam Long bandId){

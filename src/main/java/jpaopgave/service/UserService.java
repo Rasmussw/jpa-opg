@@ -1,7 +1,9 @@
 package jpaopgave.service;
 
+import jpaopgave.configuration.SecurityConfiguration;
 import jpaopgave.model.User;
 import jpaopgave.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -26,6 +28,11 @@ public class UserService implements IUserService{
 
     @Override
     public User save(User object) {
+        //laver et hashcode af det password der skrives ind i frontend
+        //og gemmes sådan i databasen
+        PasswordEncoder pw = SecurityConfiguration.passwordEncoder();
+        object.setPassword(pw.encode(object.getPassword()));
+
         userRepository.save(object);
         return object;
     }
@@ -46,7 +53,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public List<User> findUsersByName(String name) {
-        return userRepository.findUsersByName(name);
+    public List<User> findUsersByUsername(String name) {
+        return userRepository.findUsersByUsername(name);
     }
 }

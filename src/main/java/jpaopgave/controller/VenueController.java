@@ -2,19 +2,17 @@ package jpaopgave.controller;
 
 import jpaopgave.model.Venue;
 import jpaopgave.service.IVenueService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@AllArgsConstructor
 public class VenueController {
     private IVenueService venueService;
-
-    public VenueController(IVenueService venueService) {
-        this.venueService = venueService;
-    }
 
     @PostMapping("/createVenue")
     public ResponseEntity<String> createVenue(@RequestBody Venue venue){
